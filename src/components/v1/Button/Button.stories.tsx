@@ -1,7 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn, userEvent, expect } from '@storybook/test';
-import { Button } from './Button';
-import { within } from '@storybook/test';
+import type { Meta, StoryObj } from '@storybook/react'
+import { expect, fn, userEvent, within } from 'storybook/test'
+import { Button } from './Button'
 
 const meta = {
   title: 'Components/Button',
@@ -9,10 +8,10 @@ const meta = {
   args: {
     onClick: fn(),
   },
-} satisfies Meta<typeof Button>;
+} satisfies Meta<typeof Button>
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+export default meta
+type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
   args: {
@@ -20,13 +19,13 @@ export const Primary: Story = {
     children: 'Primary Button',
   },
   play: async ({ canvasElement, args }) => {
-    const canvas = within(canvasElement);
-    const button = canvas.getByRole('button');
+    const canvas = within(canvasElement)
+    const button = canvas.getByRole('button')
 
-    await userEvent.click(button);
-    expect(args.onClick).toHaveBeenCalled();
+    await userEvent.click(button)
+    expect(args.onClick).toHaveBeenCalled()
   },
-};
+}
 
 export const Secondary: Story = {
   args: {
@@ -34,11 +33,11 @@ export const Secondary: Story = {
     children: 'Secondary Button',
   },
   play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const button = canvas.getByRole('button');
-    await expect(button).toBeInTheDocument();
+    const canvas = within(canvasElement)
+    const button = canvas.getByRole('button')
+    await expect(button).toBeInTheDocument()
   },
-};
+}
 
 export const Disabled: Story = {
   args: {
@@ -46,8 +45,8 @@ export const Disabled: Story = {
     children: 'Disabled Button',
   },
   play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const button = canvas.getByRole('button');
-    await expect(button).toBeDisabled();
+    const canvas = within(canvasElement)
+    const button = canvas.getByRole('button')
+    await expect(button).toBeDisabled()
   },
-};
+}
